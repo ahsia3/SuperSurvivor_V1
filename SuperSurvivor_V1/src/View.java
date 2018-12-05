@@ -7,6 +7,7 @@ import javax.swing.JDialog;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -21,6 +22,9 @@ import javax.swing.JTextField;
  * @author tonyh
  */
 public class View extends javax.swing.JFrame {
+    
+    BeginningStoryPanel beginningpanel;
+    CabinPanel cabinpanel;
 
     /**
      * Creates new form View
@@ -95,6 +99,9 @@ public class View extends javax.swing.JFrame {
     }
     
 //MainMenu Panel
+    public JPanel getMainMenuPanel() {
+        return mainMenuPanel;
+    }
     public JButton getPlayMainMenuButton(){
         return playMainMenuButton;
     }
@@ -111,6 +118,9 @@ public class View extends javax.swing.JFrame {
     }
 
 //User Info Internal Frame
+    public JInternalFrame getUserInfoInternalFrame(){
+        return userInfoInternalFrame;
+    }
     public JLabel getUserInfoUsername(){
         return userInfoUsername;
     }
@@ -175,8 +185,6 @@ public class View extends javax.swing.JFrame {
         registerButton.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         registerButton.setForeground(new java.awt.Color(255, 255, 255));
         registerButton.setText("Create");
-
-        registerPasswordField.setText("jPasswordField1");
 
         javax.swing.GroupLayout registerDialogLayout = new javax.swing.GroupLayout(registerDialog.getContentPane());
         registerDialog.getContentPane().setLayout(registerDialogLayout);
