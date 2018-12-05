@@ -6,6 +6,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JDialog;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -108,6 +109,14 @@ public class View extends javax.swing.JFrame {
     public void addExitMainMenuListener(MouseListener listener){
         this.exitMainMenuButton.addMouseListener(listener);
     }
+
+//User Info Internal Frame
+    public JLabel getUserInfoUsername(){
+        return userInfoUsername;
+    }
+    public JMenuItem getUserInfoMenuBarDeleteAccount(){
+        return userInfoMenuBarDelete;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -134,6 +143,12 @@ public class View extends javax.swing.JFrame {
         SuperSuvivorMainMenuLabel = new javax.swing.JLabel();
         playMainMenuButton = new javax.swing.JButton();
         exitMainMenuButton = new javax.swing.JButton();
+        userInfoInternalFrame = new javax.swing.JInternalFrame();
+        userInfoUsername = new javax.swing.JLabel();
+        userInfoMenuBar = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        userInfoMenuBarDelete = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         DesktopPane = new javax.swing.JDesktopPane();
         loginInternalFrame = new javax.swing.JInternalFrame();
         loginLabel = new javax.swing.JLabel();
@@ -146,18 +161,18 @@ public class View extends javax.swing.JFrame {
 
         registerDialog.setBackground(new java.awt.Color(51, 255, 204));
 
-        registerLabel.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        registerLabel.setFont(new java.awt.Font("Bahnschrift", 1, 48)); // NOI18N
         registerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registerLabel.setText("Register Account");
 
-        registerUsernameLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        registerUsernameLabel.setFont(new java.awt.Font("Baskerville Old Face", 1, 24)); // NOI18N
         registerUsernameLabel.setText("Username");
 
-        registerPasswordLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        registerPasswordLabel.setFont(new java.awt.Font("Baskerville Old Face", 1, 24)); // NOI18N
         registerPasswordLabel.setText("Password");
 
         registerButton.setBackground(new java.awt.Color(0, 0, 0));
-        registerButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        registerButton.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         registerButton.setForeground(new java.awt.Color(255, 255, 255));
         registerButton.setText("Create");
 
@@ -167,49 +182,49 @@ public class View extends javax.swing.JFrame {
         registerDialog.getContentPane().setLayout(registerDialogLayout);
         registerDialogLayout.setHorizontalGroup(
             registerDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerDialogLayout.createSequentialGroup()
-                .addGap(0, 55, Short.MAX_VALUE)
-                .addComponent(registerLabel)
-                .addGap(51, 51, 51))
             .addGroup(registerDialogLayout.createSequentialGroup()
                 .addGroup(registerDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(registerPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(registerDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(registerDialogLayout.createSequentialGroup()
                             .addGap(77, 77, 77)
-                            .addGroup(registerDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(registerDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(registerUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(registerDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(registerUsernameLabel)
-                                    .addComponent(registerPasswordLabel))))
+                                .addComponent(registerUsernameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(registerPasswordLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(registerDialogLayout.createSequentialGroup()
                             .addGap(199, 199, 199)
                             .addComponent(registerButton))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
+            .addComponent(registerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         registerDialogLayout.setVerticalGroup(
             registerDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registerDialogLayout.createSequentialGroup()
-                .addComponent(registerLabel)
+                .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(registerUsernameLabel)
                 .addGap(3, 3, 3)
                 .addComponent(registerUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerPasswordLabel)
+                .addComponent(registerPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registerPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(registerButton)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
-        winLossLabel.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        winLossLabel.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 48)); // NOI18N
         winLossLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         winLossLabel.setText("Win/Loss");
 
+        mainMenuButton.setBackground(new java.awt.Color(255, 255, 255));
+        mainMenuButton.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
         mainMenuButton.setText("Main Menu");
 
+        exitButton.setBackground(new java.awt.Color(255, 255, 255));
+        exitButton.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
         exitButton.setText("Exit");
 
         javax.swing.GroupLayout WinLossDialogLayout = new javax.swing.GroupLayout(WinLossDialog.getContentPane());
@@ -217,22 +232,18 @@ public class View extends javax.swing.JFrame {
         WinLossDialogLayout.setHorizontalGroup(
             WinLossDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(WinLossDialogLayout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
-                .addGroup(WinLossDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WinLossDialogLayout.createSequentialGroup()
-                        .addComponent(winLossLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(146, 146, 146))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WinLossDialogLayout.createSequentialGroup()
-                        .addGroup(WinLossDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(mainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-                            .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(198, 198, 198))))
+                .addContainerGap(217, Short.MAX_VALUE)
+                .addGroup(WinLossDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(mainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                    .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(198, 198, 198))
+            .addComponent(winLossLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         WinLossDialogLayout.setVerticalGroup(
             WinLossDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(WinLossDialogLayout.createSequentialGroup()
-                .addComponent(winLossLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102)
+                .addComponent(winLossLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(mainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,27 +252,28 @@ public class View extends javax.swing.JFrame {
 
         mainMenuPanel.setBackground(new java.awt.Color(102, 255, 102));
 
-        SuperSuvivorMainMenuLabel.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        SuperSuvivorMainMenuLabel.setFont(new java.awt.Font("Agency FB", 1, 48)); // NOI18N
+        SuperSuvivorMainMenuLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SuperSuvivorMainMenuLabel.setText("SuperSurvivor");
 
+        playMainMenuButton.setBackground(new java.awt.Color(255, 255, 255));
+        playMainMenuButton.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
         playMainMenuButton.setText("PLAY");
 
+        exitMainMenuButton.setBackground(new java.awt.Color(255, 255, 255));
+        exitMainMenuButton.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
         exitMainMenuButton.setText("EXIT");
 
         javax.swing.GroupLayout mainMenuPanelLayout = new javax.swing.GroupLayout(mainMenuPanel);
         mainMenuPanel.setLayout(mainMenuPanelLayout);
         mainMenuPanelLayout.setHorizontalGroup(
             mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainMenuPanelLayout.createSequentialGroup()
-                .addContainerGap(232, Short.MAX_VALUE)
-                .addComponent(SuperSuvivorMainMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(214, 214, 214))
+            .addComponent(SuperSuvivorMainMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(mainMenuPanelLayout.createSequentialGroup()
                 .addGap(290, 290, 290)
-                .addGroup(mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(exitMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(playMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(playMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         mainMenuPanelLayout.setVerticalGroup(
             mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,19 +282,49 @@ public class View extends javax.swing.JFrame {
                 .addGap(75, 75, 75)
                 .addComponent(playMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(exitMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 133, Short.MAX_VALUE))
+                .addComponent(exitMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        userInfoInternalFrame.setBackground(new java.awt.Color(255, 255, 153));
+        userInfoInternalFrame.setVisible(true);
+
+        userInfoUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userInfoUsername.setText("Username!");
+
+        userInfoMenuBar.setBackground(new java.awt.Color(255, 255, 255));
+
+        jMenu1.setText("File");
+
+        userInfoMenuBarDelete.setText("Delete Account");
+        jMenu1.add(userInfoMenuBarDelete);
+
+        userInfoMenuBar.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        userInfoMenuBar.add(jMenu2);
+
+        userInfoInternalFrame.setJMenuBar(userInfoMenuBar);
+
+        javax.swing.GroupLayout userInfoInternalFrameLayout = new javax.swing.GroupLayout(userInfoInternalFrame.getContentPane());
+        userInfoInternalFrame.getContentPane().setLayout(userInfoInternalFrameLayout);
+        userInfoInternalFrameLayout.setHorizontalGroup(
+            userInfoInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(userInfoUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+        );
+        userInfoInternalFrameLayout.setVerticalGroup(
+            userInfoInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userInfoInternalFrameLayout.createSequentialGroup()
+                .addComponent(userInfoUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 379, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        DesktopPane.setLayout(new javax.swing.OverlayLayout(DesktopPane));
 
         loginInternalFrame.setBackground(new java.awt.Color(51, 255, 204));
         loginInternalFrame.setVisible(true);
         loginInternalFrame.getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        loginLabel.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        loginLabel.setFont(new java.awt.Font("Bahnschrift", 1, 48)); // NOI18N
         loginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loginLabel.setText("SuperSurvivor Login");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -300,10 +342,10 @@ public class View extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 588;
         gridBagConstraints.ipady = 28;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 117, 0, 163);
+        gridBagConstraints.insets = new java.awt.Insets(6, 117, 0, 0);
         loginInternalFrame.getContentPane().add(usernameField, gridBagConstraints);
 
-        usernameLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        usernameLabel.setFont(new java.awt.Font("Baskerville Old Face", 1, 24)); // NOI18N
         usernameLabel.setText("Username");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -313,7 +355,7 @@ public class View extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(41, 117, 0, 0);
         loginInternalFrame.getContentPane().add(usernameLabel, gridBagConstraints);
 
-        passwordLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        passwordLabel.setFont(new java.awt.Font("Baskerville Old Face", 1, 24)); // NOI18N
         passwordLabel.setText("Password");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -323,7 +365,7 @@ public class View extends javax.swing.JFrame {
         loginInternalFrame.getContentPane().add(passwordLabel, gridBagConstraints);
 
         loginButton.setBackground(new java.awt.Color(0, 0, 0));
-        loginButton.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        loginButton.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         loginButton.setForeground(new java.awt.Color(255, 255, 255));
         loginButton.setText("Submit");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -332,31 +374,48 @@ public class View extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 56;
         gridBagConstraints.ipady = 21;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 121, 62, 0);
+        gridBagConstraints.insets = new java.awt.Insets(18, 121, 51, 0);
         loginInternalFrame.getContentPane().add(loginButton, gridBagConstraints);
 
+        createAccountLabel.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
         createAccountLabel.setText("Click here to Register an Account");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 16, 0, 163);
+        gridBagConstraints.insets = new java.awt.Insets(18, 263, 0, 0);
         loginInternalFrame.getContentPane().add(createAccountLabel, gridBagConstraints);
 
         passwordField.setText("jPasswordField1");
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 8;
-        gridBagConstraints.ipadx = 588;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.ipadx = 484;
         gridBagConstraints.ipady = 28;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 117, 0, 163);
+        gridBagConstraints.insets = new java.awt.Insets(6, 117, 0, 136);
         loginInternalFrame.getContentPane().add(passwordField, gridBagConstraints);
 
-        DesktopPane.add(loginInternalFrame);
+        DesktopPane.setLayer(loginInternalFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout DesktopPaneLayout = new javax.swing.GroupLayout(DesktopPane);
+        DesktopPane.setLayout(DesktopPaneLayout);
+        DesktopPaneLayout.setHorizontalGroup(
+            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loginInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        DesktopPaneLayout.setVerticalGroup(
+            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loginInternalFrame)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -371,6 +430,10 @@ public class View extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -414,6 +477,8 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel createAccountLabel;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton exitMainMenuButton;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JButton loginButton;
     private javax.swing.JInternalFrame loginInternalFrame;
     private javax.swing.JLabel loginLabel;
@@ -429,6 +494,10 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel registerPasswordLabel;
     private javax.swing.JTextField registerUsernameField;
     private javax.swing.JLabel registerUsernameLabel;
+    private javax.swing.JInternalFrame userInfoInternalFrame;
+    private javax.swing.JMenuBar userInfoMenuBar;
+    private javax.swing.JMenuItem userInfoMenuBarDelete;
+    private javax.swing.JLabel userInfoUsername;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel winLossLabel;
