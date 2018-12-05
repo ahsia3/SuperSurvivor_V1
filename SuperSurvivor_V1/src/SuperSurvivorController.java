@@ -95,7 +95,10 @@ public class SuperSurvivorController {
 //                        view.getDesktopPane().setLayout(new java.awt.GridBagLayout());
 //                        view.getUserInfoInternalFrame().setBounds(view.getDesktopPane().getBounds());
                         view.getMainMenuPanel().setPreferredSize(new Dimension(view.getDesktopPane().getWidth()/2, view.getDesktopPane().getHeight()));
-                        view.getMainMenuPanel().setBounds((view.getDesktopPane().getX()), view.getDesktopPane().getY(), view.getDesktopPane().getWidth(), view.getDesktopPane().getHeight());
+                        view.getMainMenuPanel().setBounds(200, 0, 500, 500);
+                        view.getUserInfoInternalFrame().setVisible(true);
+                        view.getDesktopPane().add(view.getUserInfoInternalFrame());
+                        view.getUserInfoInternalFrame().setBounds(0,0,200,500);
                         view.getUserInfoInternalFrame().setVisible(true);
 //                        view.remove(view.getDesktopPane());
 //                        view.remove(view.getLoginInternalFrame());
