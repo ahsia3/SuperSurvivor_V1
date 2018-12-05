@@ -262,6 +262,21 @@ public class DatabaseBean<pubic> implements Serializable {
             return temp;
         }
     }
+    
+    public static void DeleteUser(int id) {
+        String sql = "DELETE FROM User WHERE id = ?";
+        try (Connection conn = DriverManager.getConnection(url);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+ 
+            // set the corresponding param
+            pstmt.setInt(1, id);
+            // execute the delete statement
+            pstmt.executeUpdate();
+ 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 
 }

@@ -1,4 +1,6 @@
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
@@ -31,6 +33,14 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
+    }
+    
+    public void centerMe(){
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((screen.getWidth() - getWidth()) /2);
+        int y = (int) ((screen.getHeight() -getHeight()) /2);
+        setLocation(x, y);
+
     }
 
 //JFrame - Desktop Pane + Login
@@ -126,6 +136,9 @@ public class View extends javax.swing.JFrame {
     }
     public JMenuItem getUserInfoMenuBarDeleteAccount(){
         return userInfoMenuBarDelete;
+    }
+    public void addDeleteUserListener(ActionListener listener) {
+        this.userInfoMenuBarDelete.addActionListener(listener);
     }
     
     /**

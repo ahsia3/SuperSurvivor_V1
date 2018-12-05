@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -30,6 +31,10 @@ public class SuperSurvivorController {
     private ActionListener actionListener;
     private MouseListener mouseListener;
     int x= 0;
+    int userid;
+    String userName;
+    String userPass;
+    int userindex;
     ArrayList<Scenes> scenes = DatabaseBean.RetriveAllScenes();
     ArrayList<Scenes> cscenes = DatabaseBean.RetriveAllCabinScenes();
     ArrayList<User> users = DatabaseBean.RetriveAllUsers();
@@ -48,10 +53,11 @@ public class SuperSurvivorController {
         signInStuff();
         registerStuff();
         menuStuff();
+        userInfoStuff();
         beginningStoryStuff();
         cabinStuff();
         winStuff();
-        
+        view.centerMe();
     }
     
     public void start() {
@@ -81,34 +87,22 @@ public class SuperSurvivorController {
             public void actionPerformed(ActionEvent evt) {
                 JButton b=(JButton) evt.getSource();
                 System.out.println(b.getText());
-                User user;
-                String userName;
-                String userPass;
                 for(int i = 0; i < users.size(); i++) {
                     userName = users.get(i).getUname();
                     userPass = users.get(i).getPass();
                     String pass = new String(view.getLoginPassword().getPassword());
                     if (userName.equals(view.getLoginUsername().getText()) && userPass.equals(pass)) {
+                        userindex = i;
+                        userid = users.get(userindex).getId();
                         view.getDesktopPane().remove(view.getLoginInternalFrame());
-//                        view.getDesktopPane().add(view.getUserInfoInternalFrame());
                         view.getDesktopPane().add(view.getMainMenuPanel());
-//                        view.getDesktopPane().setLayout(new java.awt.GridBagLayout());
-//                        view.getUserInfoInternalFrame().setBounds(view.getDesktopPane().getBounds());
-                        view.getMainMenuPanel().setPreferredSize(new Dimension(view.getDesktopPane().getWidth()/2, view.getDesktopPane().getHeight()));
-                        view.getMainMenuPanel().setBounds(200, 0, 500, 500);
+                        view.getMainMenuPanel().setBounds(view.getDesktopPane().getWidth()/4, 0, view.getDesktopPane().getWidth() - view.getDesktopPane().getWidth()/4, 500);
                         view.getUserInfoInternalFrame().setVisible(true);
                         view.getDesktopPane().add(view.getUserInfoInternalFrame());
-                        view.getUserInfoInternalFrame().setBounds(0,0,200,500);
+                        view.getUserInfoInternalFrame().setBounds(0,0,view.getDesktopPane().getWidth()/4,500);
                         view.getUserInfoInternalFrame().setVisible(true);
-//                        view.remove(view.getDesktopPane());
-//                        view.remove(view.getLoginInternalFrame());
-////                        view.add(view.getMainMenuPanel());
-////                        view.getMainMenuPanel().setVisible(true);
-////                        view.getMainMenuPanel().setPreferredSize(new Dimension(500, 500));
-//                        view.revalidate();
                         view.getDesktopPane().repaint();
-//                        view.pack();
-//                        view.menupanel.setUserLabel(userName);
+                        view.getUserInfoUsername().setText(userName);
                         
                         System.out.println("Correct login");
                         break;
@@ -129,6 +123,8 @@ public class SuperSurvivorController {
             @Override
             //This is the only one that needs to be overridden. For some reason, the rest have to be defined.
             public void mouseClicked(MouseEvent e) {
+                view.getRegisterUsername().setText("");
+                view.getRegisterPassword().setText("");
                 view.getRegisterDialog().pack();
                 view.getRegisterDialog().setVisible(true);
             }
@@ -169,9 +165,22 @@ public class SuperSurvivorController {
                 String pass = new String(view.getRegisterPassword().getPassword());
                 User user = new User(17, view.getRegisterUsername().getText(), pass);
                 DatabaseBean.WriteUser(user);
-                String userName = user.getUname();
-                System.out.println(userName + " has been added as a user");
-//                view.menupanel.setUserLabel(userName);
+                users = DatabaseBean.RetriveAllUsers();
+                userName = user.getUname();
+                userPass = user.getPass();
+                userindex = users.size()-1;
+                userid = users.get(userindex).getId();
+                System.out.println(userName + " has been added as a user" + "\nPassword: " + userPass);
+                view.getRegisterDialog().dispose();
+                view.getDesktopPane().remove(view.getLoginInternalFrame());
+                view.getDesktopPane().add(view.getMainMenuPanel());
+                view.getMainMenuPanel().setBounds(view.getDesktopPane().getWidth()/4, 0, view.getDesktopPane().getWidth() - view.getDesktopPane().getWidth()/4, 500);
+                view.getUserInfoInternalFrame().setVisible(true);
+                view.getDesktopPane().add(view.getUserInfoInternalFrame());
+                view.getUserInfoInternalFrame().setBounds(0,0,view.getDesktopPane().getWidth()/4,500);
+                view.getUserInfoInternalFrame().setVisible(true);
+                view.getDesktopPane().repaint();
+                view.getUserInfoUsername().setText(userName);
                 
             }
         };
@@ -189,7 +198,8 @@ public class SuperSurvivorController {
                 String d=b.getText();
                 System.out.println(d);
                 if(d.equals("PLAY")) {
-                    view.getDesktopPane().remove(view.getMainMenuPanel());
+//                    view.getDesktopPane().remove(view.getMainMenuPanel());
+                    view.getDesktopPane().removeAll();
                     view.getDesktopPane().add(view.beginningpanel);
                     view.beginningpanel.setBounds(view.getDesktopPane().getBounds());
                     view.validate();
@@ -227,6 +237,26 @@ public class SuperSurvivorController {
         
         view.addPlayMainMenuListener(actionListener);
         view.addExitMainMenuListener(mouseListener);
+    }
+    
+    public void userInfoStuff() {
+        actionListener = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                JMenuItem item =(JMenuItem) evt.getSource();
+                if(item.getText().equals("Delete Account")) {
+                    DatabaseBean.DeleteUser(userid);
+                    users.remove(users.get(userindex));
+                    System.out.println("Deleted user with id: " + userid + "\nusername: " +userName + "\npassword: " + userPass + "\nindex of: " + (userindex+1));
+                    view.getDesktopPane().removeAll();
+                    view.getDesktopPane().add(view.getLoginInternalFrame());
+                    view.getLoginUsername().setText("");
+                    view.getLoginPassword().setText("");
+                    view.repaint();
+                }
+            }
+        };
+        
+        view.addDeleteUserListener(actionListener);
     }
 //    
 ////    Options options;
@@ -604,6 +634,7 @@ public class SuperSurvivorController {
                             view.beginningpanel.setBounds(view.getDesktopPane().getBounds());
                             view.getWinLossDialog().pack();
                             view.getWinLossDialog().setVisible(true);
+//                            view.setVisible(false);
                             view.validate();
                             view.repaint();
                             
@@ -690,15 +721,20 @@ public class SuperSurvivorController {
 //        view.winpanel.setImage("Images\\youwinimg.jpg");
         //This is what happends when you click anything on winpanel
         //Its supposed direct back to the menupanel
-        
+        System.out.println();
         actionListener = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 view.getWinLossDialog().dispose();
-                view.getDesktopPane().remove(view.cabinpanel);
-                view.getDesktopPane().add(view.getMainMenuPanel());
-                view.getMainMenuPanel().setBounds(view.getDesktopPane().getBounds());
-                view.validate();
-                view.repaint();
+                view.setVisible(true);
+                view.getDesktopPane().remove(view.cabinpanel);view.getDesktopPane().add(view.getMainMenuPanel());
+                view.getMainMenuPanel().setBounds(view.getDesktopPane().getWidth()/4, 0, view.getDesktopPane().getWidth() - view.getDesktopPane().getWidth()/4, 500);
+                view.getUserInfoInternalFrame().setVisible(true);
+                view.getDesktopPane().add(view.getUserInfoInternalFrame());
+                view.getUserInfoInternalFrame().setBounds(0,0,view.getDesktopPane().getWidth()/4,500);
+                view.getUserInfoInternalFrame().setVisible(true);
+                view.getDesktopPane().repaint();
+                view.getUserInfoUsername().setText(userName);
+                System.out.println("userName is: "+ userName);
             }
         };
         mouseListener = new MouseListener() {
