@@ -325,9 +325,9 @@ public class View extends javax.swing.JFrame {
                 .addComponent(SuperSuvivorMainMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(playMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
                 .addComponent(exitMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         userInfoInternalFrame.setBackground(new java.awt.Color(255, 255, 153));
