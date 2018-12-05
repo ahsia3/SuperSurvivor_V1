@@ -2,11 +2,13 @@
 
 public class Death {
     private int uid;
+    String sc;
     private int sid;
     private int deaths;
 
-    public Death(int u, int s, int d){
+    public Death(int u, int s, int d, String sn){
         uid = u;
+        sc = sn;
         sid = s;
         deaths = d;
     }
@@ -21,6 +23,13 @@ public class Death {
 
     public int getDeaths() {
         return deaths;
+    }
+    public String getScene() {
+        return sc;
+    }
+    
+    public void setScene(String s) {
+        sc = s;
     }
 
     public void setSid(int sid) {

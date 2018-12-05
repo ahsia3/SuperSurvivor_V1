@@ -69,19 +69,40 @@ public class DatabaseBean<pubic> implements Serializable {
     public static void WriteDeath(Death d){
         int u = d.getUid();
         int s = d.getSid();
+        String sc = d.getScene();
         int num = d.getDeaths();
-        String sql = "INSERT INTO Deaths(uid,sid,deaths) VALUES(?,?,?)";
+        String sql = "INSERT INTO Death(uid,sid,deaths,sc) VALUES(?,?,?,?)";
         try (Connection conn = DriverManager.getConnection(url)) {
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setInt(1, u);
                 pstmt.setInt(2,s);
                 pstmt.setInt(3,num);
+                pstmt.setString(4, sc);
                 pstmt.executeUpdate();
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
+    
+//    public static void UpdateDeath(Death d){
+//        int u = d.getUid();
+//        int s = d.getSid();
+//        String sc = d.getScene();
+//        int num = d.getDeaths();
+//        String sql = "UPDATE Death SET(sid,deaths,sc) WHERE id";
+//        try (Connection conn = DriverManager.getConnection(url)) {
+//            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+//                pstmt.setInt(1, u);
+//                pstmt.setInt(2,s);
+//                pstmt.setInt(3,num);
+//                pstmt.setString(4, sc);
+//                pstmt.executeUpdate();
+//            }
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
 
     public static User RetrieveUser(int id){
         String sql = "SELECT id,uname,pass FROM User WHERE id = ?";
@@ -129,19 +150,20 @@ public class DatabaseBean<pubic> implements Serializable {
     }
 
     public static Death RetrieveDeath(int id){
-        String sql = "SELECT uid,sid,deaths FROM Death WHERE uid = ?";
+        String sql = "SELECT uid,sc,sid,deaths FROM Death WHERE uid = ?";
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             int tuid = rs.getInt("uid");
+            String ts = rs.getString("sc");
             int tsid = rs.getInt("sid");
             int tdeaths = rs.getInt("deaths");
-            Death temp = new Death(tuid,tsid,tdeaths);
+            Death temp = new Death(tuid,tsid,tdeaths,ts);
             return temp;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            Death temp = new Death(-1,-1,-1);
+            Death temp = new Death(-1,-1,-1,"");
             return temp;
         }
     }

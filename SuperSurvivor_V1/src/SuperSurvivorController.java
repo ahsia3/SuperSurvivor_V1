@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,6 +37,8 @@ public class SuperSurvivorController {
     String userName;
     String userPass;
     int userindex;
+    String scene  = "bsp";
+    int deaths = 0, sceneid = 0;
     ArrayList<Scenes> scenes = DatabaseBean.RetriveAllScenes();
     ArrayList<Scenes> cscenes = DatabaseBean.RetriveAllCabinScenes();
     ArrayList<User> users = DatabaseBean.RetriveAllUsers();
@@ -58,6 +62,17 @@ public class SuperSurvivorController {
         cabinStuff();
         winStuff();
         view.centerMe();
+        view.addWindowListener(new WindowAdapter(){
+            @Override
+            public void windowClosing(WindowEvent evt) {
+                users.get(userindex).setDeaths(userid, sceneid, deaths, scene);
+                Death d = users.get(userindex).getDeath();
+                DatabaseBean.WriteDeath(d);
+                System.out.println("Scene saved record\n" + "userid: " + userid + "\nScene: " + scene + "\nsceneid: " + sceneid + "\ndeaths: " + deaths);
+                System.out.println("Window is closing");
+                System.exit(0);
+            }
+        });
     }
     
     public void start() {
@@ -197,13 +212,54 @@ public class SuperSurvivorController {
                 JButton b=(JButton) evt.getSource();
                 String d=b.getText();
                 System.out.println(d);
-                if(d.equals("PLAY")) {
+                if(d.equals("Play")) {
 //                    view.getDesktopPane().remove(view.getMainMenuPanel());
+                    scene = DatabaseBean.RetrieveDeath(userid).getScene();
                     view.getDesktopPane().removeAll();
-                    view.getDesktopPane().add(view.beginningpanel);
-                    view.beginningpanel.setBounds(view.getDesktopPane().getBounds());
-                    view.validate();
-                    view.repaint();
+                    if(DatabaseBean.RetrieveDeath(userid).getSid() > 0) {
+                        System.out.println("Scene ID: " + DatabaseBean.RetrieveDeath(userid).getSid());
+                        clickedNext = DatabaseBean.RetrieveDeath(userid).getSid();
+                        System.out.print("Scene ID: " + clickedNext);
+                        
+                        
+                        if(scene.equals("bsp")) {
+                            view.getDesktopPane().add(view.beginningpanel);
+                            view.beginningpanel.setBounds(view.getDesktopPane().getBounds());
+                            view.validate();
+                            view.repaint();
+                            addClicked = clickedNext;
+                            view.beginningpanel.setStoryText(scenes.get(clickedNext).getText());
+                            if(addClicked>=6){
+                                intoWoods=true;
+                            }
+                            else if(addClicked==19) {
+                                intoWoods=false;
+                            }
+                            if(addClicked >= 6 && addClicked < 15){
+                                intoWoods = true;
+                                view.beginningpanel.setImage("Images\\forestimg.jpg");
+                            }
+                            if(clickedNext >= 15) {
+                                view.beginningpanel.setImage("Images\\campfireimg.jpg");
+                                view.beginningpanel.repaint();
+                            }
+                        }
+                        else if (scene.equals("cbp")) {
+                            view.getDesktopPane().add(view.cabinpanel);
+                            view.cabinpanel.setBounds(view.getDesktopPane().getBounds());
+                            view.validate();
+                            view.repaint();
+                        }
+                        
+                    }
+                    else{
+                        System.out.print("ERROR");
+                        view.getDesktopPane().add(view.beginningpanel);
+                        view.beginningpanel.setBounds(view.getDesktopPane().getBounds());
+                        view.validate();
+                        view.repaint();
+                    }
+                    
                 }
             }
         };
@@ -389,7 +445,8 @@ public class SuperSurvivorController {
         mouseListener = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                
+                scene = "bsp";
+                sceneid = clickedNext;
                 view.beginningpanel.getTxtOfOptions().setVisible(false);
                 check = false; //reset so it won't keep going into else if statements
 
@@ -419,7 +476,7 @@ public class SuperSurvivorController {
                         view.beginningpanel.setStoryText(scenes.get(clickedNext).getText());
 //                        txtStory.setText(listStory.get(clickedNext));
                     }else if(addClicked == 12){
-                        
+                        deaths++;
                         view.beginningpanel.setStoryText("Few minutes later you got bit by a venomous snake. \n You died. \n\n Click to replay scene");
                         view.beginningpanel.setTxtOfOptions("You Died");
                         view.beginningpanel.getTxtOfOptions().setVisible(true);
@@ -552,6 +609,7 @@ public class SuperSurvivorController {
                     view.cabinpanel.setStoryText(cscenes.get(23).getText());
                     try {
                         Thread.sleep(1000);
+                        deaths++;
                         view.cabinpanel.setStoryText("Suddenly the old man appears with a shotgon and kills you!\n\nClick to replay scene");
                     } catch (InterruptedException ex) {
                         Logger.getLogger(CabinPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -611,6 +669,7 @@ public class SuperSurvivorController {
         mouseListener = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                scene = "cbp";
                 
                 view.cabinpanel.getTxtOfOptions().setVisible(false);
                 check = false; //reset so it won't keep going into else if statements
@@ -647,6 +706,7 @@ public class SuperSurvivorController {
                         }
                     }else if(clickedNext >= 5 && clickedNext <=6){
                         if (clickedNext == 6) {
+                            deaths++;
                             view.cabinpanel.setStoryText("The old man kills you!\n\nClick to replay scene");
                             clickedNext = 1;
                             addClicked = clickedNext;
