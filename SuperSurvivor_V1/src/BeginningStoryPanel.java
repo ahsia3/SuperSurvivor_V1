@@ -168,10 +168,10 @@ public class BeginningStoryPanel extends javax.swing.JPanel {
         topPanel.setLayout(topPanelLayout);
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(topPanelLayout.createSequentialGroup()
-                .addGap(112, 112, 112)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topPanelLayout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(txtOfOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(65, 65, 65))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,6 +210,8 @@ public class BeginningStoryPanel extends javax.swing.JPanel {
 
         optionPanel.setOpaque(false);
 
+        firstOption.setBackground(new java.awt.Color(0, 255, 255));
+        firstOption.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
         firstOption.setText("first");
         firstOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +219,8 @@ public class BeginningStoryPanel extends javax.swing.JPanel {
             }
         });
 
+        secondOption.setBackground(new java.awt.Color(0, 255, 255));
+        secondOption.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
         secondOption.setText("second");
         secondOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,6 +228,8 @@ public class BeginningStoryPanel extends javax.swing.JPanel {
             }
         });
 
+        thirdOption.setBackground(new java.awt.Color(0, 255, 255));
+        thirdOption.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
         thirdOption.setText("third");
         thirdOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
