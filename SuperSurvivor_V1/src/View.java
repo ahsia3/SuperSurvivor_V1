@@ -276,9 +276,9 @@ public class View extends javax.swing.JFrame {
         mainMenuPanel.setLayout(mainMenuPanelLayout);
         mainMenuPanelLayout.setHorizontalGroup(
             mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SuperSuvivorMainMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(SuperSuvivorMainMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(mainMenuPanelLayout.createSequentialGroup()
-                .addGap(290, 290, 290)
+                .addGap(154, 154, 154)
                 .addGroup(mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(playMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(exitMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -287,9 +287,9 @@ public class View extends javax.swing.JFrame {
             mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainMenuPanelLayout.createSequentialGroup()
                 .addComponent(SuperSuvivorMainMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(60, 60, 60)
                 .addComponent(playMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(68, 68, 68)
                 .addComponent(exitMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -396,7 +396,6 @@ public class View extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 263, 0, 0);
         loginInternalFrame.getContentPane().add(createAccountLabel, gridBagConstraints);
 
-        passwordField.setText("jPasswordField1");
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordFieldActionPerformed(evt);
@@ -406,7 +405,7 @@ public class View extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 484;
+        gridBagConstraints.ipadx = 586;
         gridBagConstraints.ipady = 28;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 117, 0, 136);
