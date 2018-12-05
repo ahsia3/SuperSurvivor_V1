@@ -25,6 +25,13 @@ public class BeginningStoryPanel extends javax.swing.JPanel {
     
     private ArrayList<String> listStory = new ArrayList<String>(); //Array list to store Story in String format
     
+    public JButton getSettingsButton(){
+        return settingsButton;
+    }
+    public void addSettingsListener(ActionListener listener){
+        this.settingsButton.addActionListener(listener);
+    }
+    
     //Method that contains the strings of the story in ArrayList format
     private void Story(){
         //The start of the story
