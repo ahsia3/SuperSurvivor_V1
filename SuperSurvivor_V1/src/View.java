@@ -467,7 +467,6 @@ public class View extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 263, 0, 0);
         loginInternalFrame.getContentPane().add(createAccountLabel, gridBagConstraints);
 
-        passwordField.setText("jPasswordField1");
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordFieldActionPerformed(evt);
@@ -477,7 +476,7 @@ public class View extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.ipadx = 484;
+        gridBagConstraints.ipadx = 586;
         gridBagConstraints.ipady = 28;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 117, 0, 136);
