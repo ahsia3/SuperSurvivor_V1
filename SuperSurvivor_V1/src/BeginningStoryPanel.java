@@ -16,7 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 public class BeginningStoryPanel extends javax.swing.JPanel {
-    SuperSurvivorView jFrame;
+    View jFrame;
     
     private int intOptions = 0; //Counter for User button choices (rarely used)
     private int clickedNext = 0; //Counter for user clicks on the TextArea of Story
@@ -91,7 +91,7 @@ public class BeginningStoryPanel extends javax.swing.JPanel {
     BufferedImage img;
     
     //Constructor to initialize stuff
-    public BeginningStoryPanel(SuperSurvivorView jframe) {
+    public BeginningStoryPanel(View jframe) {
         initComponents();
         this.jFrame = jframe;
         this.setVisible(true);

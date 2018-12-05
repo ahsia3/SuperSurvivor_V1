@@ -15,6 +15,8 @@ public class Main {
      */
     public static void main(String[] args) {
         View view = new View();
+        DatabaseBean bean = new DatabaseBean();
+        SuperSurvivorController controller = new SuperSurvivorController(bean, view);
         view.setVisible(true);
     }
     

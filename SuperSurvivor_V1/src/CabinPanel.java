@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 
 
 public class CabinPanel extends javax.swing.JPanel {
-    SuperSurvivorView jFrame;
+    View jFrame;
     
     BufferedImage img;
     private int clickedNext = 0; //Counter for user clicks on the TextArea of Story
@@ -105,7 +105,7 @@ public class CabinPanel extends javax.swing.JPanel {
     }
     
     //Constructor to initialize stuff
-    public CabinPanel(SuperSurvivorView jframe) {
+    public CabinPanel(View jframe) {
         initComponents();
         this.jFrame = jframe;
         this.setVisible(true);
