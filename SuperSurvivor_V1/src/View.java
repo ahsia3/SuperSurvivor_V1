@@ -301,12 +301,12 @@ public class View extends javax.swing.JFrame {
         SuperSuvivorMainMenuLabel.setText("SuperSurvivor");
 
         playMainMenuButton.setBackground(new java.awt.Color(255, 255, 255));
-        playMainMenuButton.setFont(new java.awt.Font("Bahnschrift", 1, 14)); // NOI18N
-        playMainMenuButton.setText("PLAY");
+        playMainMenuButton.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
+        playMainMenuButton.setText("Play");
 
         exitMainMenuButton.setBackground(new java.awt.Color(255, 255, 255));
         exitMainMenuButton.setFont(new java.awt.Font("Bahnschrift", 1, 12)); // NOI18N
-        exitMainMenuButton.setText("EXIT");
+        exitMainMenuButton.setText("Exit");
 
         javax.swing.GroupLayout mainMenuPanelLayout = new javax.swing.GroupLayout(mainMenuPanel);
         mainMenuPanel.setLayout(mainMenuPanelLayout);
@@ -314,19 +314,20 @@ public class View extends javax.swing.JFrame {
             mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(SuperSuvivorMainMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(mainMenuPanelLayout.createSequentialGroup()
-                .addGap(290, 290, 290)
-                .addGroup(mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(playMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(exitMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(260, 260, 260)
+                .addGroup(mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(exitMainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(playMainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)))
         );
         mainMenuPanelLayout.setVerticalGroup(
             mainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainMenuPanelLayout.createSequentialGroup()
                 .addComponent(SuperSuvivorMainMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(43, 43, 43)
                 .addComponent(playMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(exitMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(exitMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         userInfoInternalFrame.setBackground(new java.awt.Color(255, 255, 153));
